@@ -31,7 +31,7 @@ node {
                 echo "Pushed Docker Build to ECR"
     }
     stage ('Deploy to ECS') {
-        sh 'sudo chmod +x deploy.sh'
+        sh 'chmod +x deploy.sh'
         sh './deploy.sh'
     }
 }
