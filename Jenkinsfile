@@ -4,7 +4,7 @@ node {
     stage('Clone repository') {
         /* Cloning the Repository to our Workspace */
 
-        checkout scm
+        git poll: true, url: 'https://github.com/saquibm6/hello-world-simple-mvn'
     }
 
     stage('Build image') {
@@ -28,7 +28,7 @@ node {
             app.push("${BUILD_NUMBER}")
             app.push("latest")
             } 
-                echo "Trying to Push Docker Build to ECR"
+                echo "Pushed Docker Build to ECR"
     }
     stage ('Deploy to ECS') {
         sh 'sudo chmod +x deploy.sh'
