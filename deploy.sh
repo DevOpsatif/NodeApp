@@ -37,5 +37,5 @@ if ["$SERVICES" == ""]; then
  aws ecs update-service --cluster ${CLUSTER} --region ${REGION} --service ${SERVICE_NAME} --task-definition ${FAMILY}:${REVISION} --desired-count ${DESIRED_COUNT}
 else
  echo "entered new service"
- aws ecs create-service --service-name ${SERVICE_NAME} --launch-type FARGATE --desired-count 1 --task-definition ${FAMILY} --cluster ${CLUSTER} --region ${REGION}
+ aws ecs create-service --service-name ${SERVICE_NAME} --launch-type FARGATE --desired-count 1 --task-definition ${FAMILY} --cluster ${CLUSTER} --region ${REGION} --network-configuration "awsvpcConfiguration={subnets=[subnet-08cd0135126648d89, subnet-0d902981621e8915a],securityGroups=[sg-01983ea1eb5d8db37, sg-0592bcfb288bd1e9b],assignPublicIp=ENABLED}"
 fi
